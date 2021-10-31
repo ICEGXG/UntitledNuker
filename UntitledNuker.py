@@ -126,8 +126,7 @@ async def help(ctx):
     embed.add_field(name="Edit server name", value=f"`{p}12 <name>`", inline=True)
     embed.add_field(name="\u200b", value="\u200b", inline=True)
     embed.add_field(name="Revive", value=f"`{p}13 <guild id>`\n`Creating 1 text channel on server if you deleted all`\n`Execute in DM`", inline=False)
-    embed.add_field(name="\u200b\nInfo", value="**Untitled Nuker**\nMade by ICE#4449\nGitHub: https://github.com/ICEGXG/UntitledNuker\n"
-                                                "Author is not responsible for any of your actions or for the damage caused by the bot", inline=False)
+    embed.add_field(name="\u200b\nInfo", value="**Untitled Nuker**\nMade by ICE#4449\nGitHub: https://github.com/ICEGXG/UntitledNuker\n", inline=False)
     await ctx.message.author.send(embed=embed)
 
 @bot.command(name='1', aliases=["nk", "nuke"])
