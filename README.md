@@ -11,8 +11,7 @@ Python Discord Server Nuker
 7. `Spam With Channels`
 8. `Spam With Roles`
 9. `Edit Server Icon`
-10. `Edit Server Name`
-And a few extra features
+10. `Edit Server Name`  
 
 # Set-up: 
 ### > For Linux:  
@@ -25,4 +24,4 @@ git clone https://github.com/ICEGXG/UntitledNuker;cd UntitledNuker;pip3 install 
 ```
 
 ## Warning
-This is tool was made for educational purposes. I'm not accountable for any unlawful, unprecedented action and any violation of ToS administered by a third party.
+This is bot was made for educational purposes. I'm not accountable for any unlawful, unprecedented action and any violation of ToS administered by a third party.
