@@ -5,7 +5,7 @@ Python Discord Server Nuker
 1. `Ban Everyone`
 2. `Kick Everyone`
 3. `Rename Everyone`
-4. `Spam To All Channels
+4. `Spam To All Channels`
 5. `Delete All Channels`
 6. `Delete All Roles`
 7. `Spam With Channels`
