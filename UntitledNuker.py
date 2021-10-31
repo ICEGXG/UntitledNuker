@@ -3,16 +3,18 @@ import discord
 import json
 import traceback
 import requests
+import os
+import traceback
 
 from discord.ext import commands
 from colorama import Fore
 
 colorama.init()
+os.system('cls')
 
 version = "1.0.0"
 msgs = {"info": f"{Fore.WHITE}[{Fore.CYAN}i{Fore.WHITE}]",
         "+": f"{Fore.WHITE}[{Fore.CYAN}+{Fore.WHITE}]",
-        "-": f"{Fore.WHITE}[{Fore.CYAN}-{Fore.WHITE}]", 
         "error": f"{Fore.WHITE}[{Fore.RED}e{Fore.WHITE}]",
         "input": f"{Fore.WHITE}{Fore.CYAN}>>{Fore.WHITE}"}
 
@@ -21,6 +23,12 @@ async def msg_delete(ctx):
         await ctx.message.delete()
     except:
         print(f"{msgs['error']}Can't delete your message")
+
+def userOrBot():
+    if requests.get("https://discord.com/api/v8/users/@me", headers={"Authorization": f'{token}'}).status_code == 200:
+        return True # Returns False if user is bot
+    else:
+        return False
 
 def checkVersion():
     try:
@@ -53,7 +61,7 @@ print(f'{Fore.CYAN}\n\n                  __  __  __   __  ______ __  ______ __  
                         "\n"
                         f"{Fore.WHITE}                            Author: {Fore.CYAN}ICE#4449\n"
                         f"{Fore.WHITE}                            Version: {Fore.CYAN}{version} {checkVersion()}\n"
-                        f"{Fore.WHITE}                            GitHub: {Fore.CYAN}https://github.com/ICEGXG/UntitledNuker\n\n")
+                        f"{Fore.WHITE}                            GitHub: {Fore.CYAN}https://github.com/ICEGXG/UntitledNuker\n\n{Fore.WHITE}")
 
 try:
     with open(f"config.json", encoding='utf8') as data:
@@ -79,7 +87,7 @@ except FileNotFoundError:
         json.dump(config, data, indent=2)
     print(f"{msgs['info']}Created config.json")
 
-bot = commands.Bot(command_prefix=prefix, intents=discord.Intents.all())
+bot = commands.Bot(command_prefix=prefix, self_bot=userOrBot(), intents=discord.Intents.all())
 bot.remove_command("help")
 
 @bot.event
@@ -295,4 +303,13 @@ async def reviveGuild(ctx, guildId: int=None):
         except:
             print(f"{msgs['error']} Can't revive {guild} :(")
 
-bot.run(token)
+try:
+    bot.run(token, bot=not userOrBot())
+except discord.errors.LoginFailure:
+    print(f'{msgs["error"]} Invalid Token')
+    input()
+    os._exit(0)
+except Exception as e:
+    print(f'{Fore.RED}\nAn error occured while logging:\n{"".join(traceback.format_exception(type(e), e, e.__traceback__))}{Fore.WHITE}')
+    input()
+    os._exit(0)
