@@ -69,11 +69,11 @@ bot.remove_command("help")
 
 @bot.event
 async def on_ready():
-    print(f"\n\n{Fore.CYAN}" + ("═"*75).center(100) + f"\n{Fore.WHITE}" + 
-            f"Logged in as {bot.user}".center(100) + "\n" + 
-            f"Prefix: {prefix}".center(100) + "\n" + 
-            f"Total servers: {len(bot.guilds)}".center(100) + "\n" + 
-            f"Total members: {len(bot.users)} ".center(100) + f"\n{Fore.CYAN}" + ("═"*75).center(100))
+    print(f"\n\n{Fore.CYAN}" + ("═"*75).center(95) + f"\n{Fore.WHITE}" + 
+            f"Logged in as {bot.user}".center(95) + "\n" + 
+            f"Prefix: {prefix}".center(95) + "\n" + 
+            f"Total servers: {len(bot.guilds)}".center(95) + "\n" + 
+            f"Total members: {len(bot.users)} ".center(95) + f"\n{Fore.CYAN}" + ("═"*75).center(95) + "\n\n")
 
 @bot.event
 async def on_command_error(ctx, err):
