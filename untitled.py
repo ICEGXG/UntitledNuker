@@ -130,9 +130,9 @@ async def help(ctx):
                                                 "Author is not responsible for any of your actions or for the damage caused by the bot", inline=False)
     await ctx.message.author.send(embed=embed)
 
-@bot.command(name='1', aliases=["nk"])
+@bot.command(name='1', aliases=["nk", "nuke"])
 async def nuke(ctx, ban: bool=True, text="UntitledNuker"):
-    await msg_delete()
+    await msg_delete(ctx)
 
     icon = await ctx.message.attachments[0].read() if ctx.message.attachments else None
     await ctx.guild.edit(name=text, icon=icon, banner=icon)
