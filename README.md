@@ -5,7 +5,7 @@ Python Discord Server Nuker
 1. `Ban Everyone`
 2. `Kick Everyone`
 3. `Rename Everyone`
-4. `DM everyone` **(NEW)**
+4. `DM Everyone` **(NEW)**
 5. `Spam To All Channels`
 6. `Delete All Channels`
 7. `Delete All Roles`
@@ -13,7 +13,7 @@ Python Discord Server Nuker
 9. `Spam With Roles`
 10. `Edit Server Icon`
 11. `Edit Server Name`  
-12. `Get admin role` **(NEW)**
+12. `Get Admin Role` **(NEW)**
 
 # Set-up: 
 ### > For Linux:  
@@ -27,6 +27,6 @@ git clone https://github.com/ICEGXG/UntitledNuker;cd UntitledNuker;pip3 install 
 
 # Meta
 ICEGXG - ICE#4449  
-Distributed under the MIT license. see  [LICENSE.txt](https://github.com/ICEGXG/UntitledNuker/blob/master/LICENSE.txt)
+Distributed under the MIT license. See  [LICENSE.txt](https://github.com/ICEGXG/UntitledNuker/blob/master/LICENSE.txt)
 for more information.  
 This is bot was made for educational purposes. Author is not accountable for any unlawful, unprecedented action and any violation of ToS administered by a third party.
