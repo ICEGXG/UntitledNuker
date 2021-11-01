@@ -18,12 +18,12 @@ Python Discord Server Nuker
 # Set-up: 
 ### > For Linux:  
 ```
-sudo apt install git python3;cd;git clone https://github.com/ICEGXG/UntitledNuker;cd UntitledNuker;pip3 install -r requirements.txt;python3 UntitledNuker.py
+sudo apt update;sudo apt upgrade;sudo apt install git python;sudo apt install python3-pip;cd;git clone https://github.com/ICEGXG/UntitledNuker;cd UntitledNuker;pip3 install -r requirements.txt;python3 UntitledNuker.py
 ```
 ### > For Windows (You should have python3 installed):
 ```
 git clone https://github.com/ICEGXG/UntitledNuker;cd UntitledNuker;pip3 install -r requirements.txt;python3 UntitledNuker.py
 ```
 
-## Warning
+# Disclaimer
 This is bot was made for educational purposes. I'm not accountable for any unlawful, unprecedented action and any violation of ToS administered by a third party.
