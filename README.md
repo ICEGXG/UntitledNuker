@@ -23,5 +23,5 @@ sudo apt update;sudo apt upgrade;sudo apt install git python;sudo apt install py
 git clone https://github.com/ICEGXG/UntitledNuker;cd UntitledNuker;pip3 install -r requirements.txt;python3 UntitledNuker.py
 ```
 
-## Warning
+# Disclaimer
 This is bot was made for educational purposes. I'm not accountable for any unlawful, unprecedented action and any violation of ToS administered by a third party.
