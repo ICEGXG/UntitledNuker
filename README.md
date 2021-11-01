@@ -5,13 +5,15 @@ Python Discord Server Nuker
 1. `Ban Everyone`
 2. `Kick Everyone`
 3. `Rename Everyone`
-4. `Spam To All Channels`
-5. `Delete All Channels`
-6. `Delete All Roles`
-7. `Spam With Channels`
-8. `Spam With Roles`
-9. `Edit Server Icon`
-10. `Edit Server Name`  
+4. `DM everyone` **(1.1.0)**
+5. `Spam To All Channels`
+6. `Delete All Channels`
+7. `Delete All Roles`
+8. `Spam With Channels`
+9. `Spam With Roles`
+10. `Edit Server Icon`
+11. `Edit Server Name`  
+12. `Get admin role` **(1.1.0)**
 
 # Set-up: 
 ### > For Linux:  
