@@ -22,7 +22,7 @@ sudo apt update;sudo apt upgrade;sudo apt install git python;sudo apt install py
 ```
 ### > For Windows (You should have python3 installed):
 ```
-git clone https://github.com/ICEGXG/UntitledNuker;cd UntitledNuker/src;pip3 install -r requirements.txt;python3 UntitledNuker.py
+git clone https://github.com/ICEGXG/UntitledNuker;cd UntitledNuker/src;pip3 install -r requirements.txt;python UntitledNuker.py
 ```
 
 # Meta
