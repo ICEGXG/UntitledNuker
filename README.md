@@ -26,7 +26,7 @@ git clone https://github.com/ICEGXG/UntitledNuker;cd UntitledNuker;pip3 install 
 ```
 
 # Meta
-ICEGXG - ICE#4449  
+Contact me on discord if you have questions: `ICE#4449`  
 Distributed under the MIT license. See  [LICENSE.txt](https://github.com/ICEGXG/UntitledNuker/blob/master/LICENSE.txt)
 for more information.  
 This bot was made for educational purposes. Author is not accountable for any unlawful, unprecedented action and any violation of ToS administered by a third party.
