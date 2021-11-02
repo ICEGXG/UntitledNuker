@@ -18,7 +18,7 @@ Python Discord Server Nuker
 # Set-up: 
 ### > For Linux:  
 ```
-sudo apt update;sudo apt upgrade;sudo apt install git python;sudo apt install python3-pip;cd;git clone https://github.com/ICEGXG/UntitledNuker;cd UntitledNuker/src;pip3 install -r requirements.txt;python3 UntitledNuker.py
+sudo apt update;sudo apt upgrade;sudo apt install git python;sudo apt install python3-pip;cd;git clone https://github.com/ICEGXG/UntitledNuker;cd UntitledNuker/src;pip3 install -r requirements.txt;python UntitledNuker.py
 ```
 ### > For Windows (You should have python3 installed):
 ```
