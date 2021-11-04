@@ -2,18 +2,19 @@
 Python Discord Server Nuker
 
 ## Features:
-1. `Ban Everyone`
-2. `Kick Everyone`
-3. `Rename Everyone`
-4. `DM Everyone` **(NEW)**
-5. `Spam To All Channels`
-6. `Delete All Channels`
-7. `Delete All Roles`
-8. `Spam With Channels`
-9. `Spam With Roles`
-10. `Edit Server Icon`
-11. `Edit Server Name`  
-12. `Get Admin Role` **(NEW)**
+1. `Nuke Server`
+2. `Ban Everyone`
+3. `Kick Everyone`
+4. `Rename Everyone`
+5. `DM Everyone` **(NEW)**
+6. `Spam To All Channels`
+7. `Delete All Channels`
+8. `Delete All Roles`
+9. `Spam With Channels`
+10. `Spam With Roles`
+11. `Edit Server Icon`
+12. `Edit Server Name`  
+13. `Get Admin Role` **(NEW)**
 
 # Set-up: 
 ### > For Linux:  
