@@ -1,0 +1,3 @@
+﻿colorama
+discord
+requests
