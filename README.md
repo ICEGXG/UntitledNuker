@@ -11,7 +11,6 @@
   </a>
   
   <h3 align="center">Multifunctional bot for destroying discord servers</h3>
-  <h3 align="center">Version 1.3.0 doesn't work properly rn, use 1.2.0 instead</h3>
   <p align="center">
     <br />
     <a href="https://github.com/ICEGXG/UntitledNuker"><strong>Explore the docs »</strong></a>
