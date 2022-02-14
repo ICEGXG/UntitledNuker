@@ -11,7 +11,6 @@
   </a>
   
   <h3 align="center">Multifunctional bot for destroying discord servers</h3>
-
   <p align="center">
     <br />
     <a href="https://github.com/ICEGXG/UntitledNuker"><strong>Explore the docs »</strong></a>
