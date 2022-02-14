@@ -16,7 +16,7 @@ try:
         version = data.readline()
 except FileNotFoundError:
     try:
-        with open("./version.txt") as data:
+        with open("../version.txt") as data:
             version = data.readline()
     except FileNotFoundError:
         version = ""
