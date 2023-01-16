@@ -123,15 +123,10 @@ Next times bot will run immediately.
 After starting you can use the !help command (Change `!` to your prefix), being on the same server as the bot (Or into PM). Bot will send you all the available commands.
 <p align="right">(<a href="#top">back to top</a>)</p>
 
-## Changelog
-* You can now edit the settings with commands
-* Added new activity types (Listening, watching)
-* You can now enable or disable activity
-* Changed update check system
-* Added whitelisting
-* Easy adding and removing users from owners
-* Removed permanent "Latest" title
-* Probably new bugs :)
+## Changelog (1.3.1)
+* Fixed error when launching using source code
+* Added option to enable/disable logging via discord.py
+* Removed useless parts of the code
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 ## License
