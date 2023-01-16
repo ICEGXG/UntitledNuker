@@ -42,17 +42,6 @@ async def msg_delete(ctx):
         print(f"{msgs['error']} Can't delete your message")
 
 
-def userOrBot():
-    """
-    Returns True if token belongs to user's account
-    Returns False if token belongs to bot's account
-    """
-    if requests.get("https://discord.com/api/v8/users/@me", headers={"Authorization": f'{token}'}).status_code == 200:
-        return True
-    else:
-        return False
-
-
 def checkVersion():
     """
     Checking for new versions on GitHub
@@ -112,6 +101,7 @@ try:
     owners = config["owners"]
     whiteListBool = config["whitelistbool"]
     activity = config["activity"]
+    enablelogging = config["discordlogging"]
     print(f"{msgs['info']} Loaded config.json")
 except FileNotFoundError:
     token = input(f"Paste token {msgs['input']} ")
@@ -130,22 +120,19 @@ except FileNotFoundError:
     activity = {"type": "playing",
                 "text": f"Untitled Nuker v{version}",
                 "isenabled": True}
+    enablelogging = False
     config = {
         "token": token,
         "prefix": prefix,
         "owners": owners,
         "whitelistbool": whiteListBool,
-        "activity": activity
+        "activity": activity,
+        "discordlogging": enablelogging
     }
     with open("config.json", "w") as data:
         json.dump(config, data, indent=2)
     print(f"{msgs['info']} Created config.json")
-# shitcode :)
-if userOrBot() == True:
-    print(f"{msgs['info']} Untitled Nuker doesn't support self bots now, it will likely be added in next versions")
-    print(msgs['pressenter'])
-    input()
-    os._exit(0)
+
 
 if activity["isenabled"]:
     activityToBot = checkActivity(activity["type"], activity["text"])
@@ -153,7 +140,7 @@ else:
     activityToBot = None
 
 
-bot = commands.Bot(command_prefix=prefix, self_bot=userOrBot(),
+bot = commands.Bot(command_prefix=prefix,
                    activity=activityToBot, intents=discord.Intents.all())
 bot.remove_command("help")
 
@@ -613,8 +600,13 @@ async def reviveGuild(ctx, guildId: int = None):
 Running bot
 """
 
+
+
 try:
-    bot.run(token, bot=not userOrBot())
+    if enablelogging == False:
+        bot.run(token, log_handler=None)
+    else:
+        bot.run(token)
 except discord.errors.LoginFailure:
     print(f'{msgs["error"]} Invalid Token')
     print(msgs['pressenter'])
