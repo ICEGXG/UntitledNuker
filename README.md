@@ -130,11 +130,11 @@ After starting you can use the !help command (Change `!` to your prefix), being 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 ## License
-Distributed under the MIT License. See [LICENSE.txt](LICENSE.txt) for more information.
+Distributed under the MIT License. See [LICENSE.txt](LICENSE.txt) for more information.  
+Use for educational purposes only
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 ## Contact
-You can contact me on discord if you have questions - [ICE#4449](https://www.discordapp.com)  
 Project Link: [https://github.com/ICEGXG/UntitledNuker](https://github.com/ICEGXG/UntitledNuker)  
   
 P.S. I'm not python support, so ask questions only related to my bot.
