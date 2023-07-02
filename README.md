@@ -137,5 +137,4 @@ Use for educational purposes only
 ## Contact
 Project Link: [https://github.com/ICEGXG/UntitledNuker](https://github.com/ICEGXG/UntitledNuker)  
   
-P.S. I'm not python support, so ask questions only related to my bot.
 <p align="right">(<a href="#top">back to top</a>)</p>
